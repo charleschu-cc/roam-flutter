@@ -17,6 +17,7 @@ class HomeState extends State<Home> {
   int _currentNavIndex = 0;
 
   ListWidget list;
+  ProfileWidget profile;
   List<Widget> _navChildren;
 
   // final List<Widget> _navChildren = [
@@ -28,11 +29,12 @@ class HomeState extends State<Home> {
   @override
   void initState() {
     list = ListWidget();
+    profile = ProfileWidget(Colors.white);
 
     _navChildren = [
       _buildSuggestions(),
       list,
-      PlaceholderWidget(Colors.grey)
+      profile
     ];
   }
 
@@ -141,6 +143,7 @@ class HomeState extends State<Home> {
   //     },
   //   );
   // }
+
   Widget _buildRow(WordPair pair) {
     final bool alreadySaved = _saved.contains(pair);
     return Card(
