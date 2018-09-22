@@ -1,6 +1,6 @@
-# myapp
+# roam
 
-A new Flutter project.
+A community-based travel experience mobile application.
 
 ## Getting Started
 
