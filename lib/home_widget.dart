@@ -21,12 +21,14 @@ class HomeState extends State<Home> {
   ProfileWidget profile;
   List<Widget> _navChildren;
 
+  final PageStorageBucket bucket = PageStorageBucket();
+
 
   @override
   void initState() {
+    suggest = SuggestionWidget(_saved);
     list = ListWidget();
     profile = ProfileWidget(Colors.white);
-    suggest = SuggestionWidget(_saved);
 
     _navChildren = [
       suggest,
@@ -50,13 +52,22 @@ class HomeState extends State<Home> {
           new IconButton(icon: const Icon(Icons.tune), onPressed: _pushSaved),
         ],
       ),
-      body: _navChildren[_currentNavIndex],
+      body: PageStorage(
+        child: _navChildren[_currentNavIndex],
+        bucket: bucket,
+      ),
       drawer: Drawer (
-        child: Column(
+        child: ListView(
           children: <Widget>[
             UserAccountsDrawerHeader(
               accountName: const Text('Rachel Chu'),
               accountEmail: const Text('rachelchu@crazyrichasians.io'),
+              decoration: new BoxDecoration(
+                image: new DecorationImage(
+                  fit: BoxFit.fill,
+                  image: new NetworkImage("https://lonelyplanetwp.imgix.net/2014/10/resized-shutterstock_593894891-e364f2ce23b9.jpg?fit=min&q=40&sharp=10&vib=20&w=1470"),
+                ),
+              ),
             ),
             ListTile(
               leading: const Icon(Icons.add),
@@ -72,9 +83,10 @@ class HomeState extends State<Home> {
                 _manageAccounts(context);
               },
             ),
-            //AboutListTile(
-            //  applicationVersion: "0.0.1",
-            //),
+            Divider(),
+            AboutListTile(
+              applicationVersion: "0.0.1",
+            ),
           ],
         ),
       ),
