@@ -11,7 +11,7 @@ class App extends StatelessWidget {
       title: 'Roam',
       debugShowCheckedModeBanner: false,
       theme: new ThemeData(
-        primaryColor: Colors.black,
+        primaryColor: Colors.white,
       ),
       home: Home(),
     );

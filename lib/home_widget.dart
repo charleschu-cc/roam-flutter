@@ -93,7 +93,8 @@ class HomeState extends State<Home> {
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
         currentIndex: _currentNavIndex,
-        iconSize: 28.0,
+        iconSize: 24.0,
+        fixedColor: Colors.black,
         items: [
           BottomNavigationBarItem(
             icon: new Icon(Icons.home),

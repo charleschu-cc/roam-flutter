@@ -10,7 +10,7 @@ class SuggestionWidget extends StatefulWidget {
   SuggestionState createState() => new SuggestionState();
 }
 
-class SuggestionState extends State<SuggestionWidget> {
+class SuggestionState extends State<SuggestionWidget> with AutomaticKeepAliveClientMixin<SuggestionWidget>{
   final _suggestions = <WordPair>[];
 
   @override
@@ -82,4 +82,7 @@ class SuggestionState extends State<SuggestionWidget> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
